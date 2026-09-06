@@ -13,8 +13,8 @@ binding, same priority as `REQUIREMENTS.md`.
 - The private implementation (web desk + companion APK) lives in a separate
   non-public repository. Scaffold it there, never here.
 - Public repo may hold: `REQUIREMENTS.md`, `docs/`, this file, LICENSE,
-  labeled screenshots of FR24 **UI chrome** (no live PII / tail numbers of
-  private aircraft if avoidable), and planning notes.
+  labeled screenshots of FR24 **or X app chrome** (no passwords, no live PII
+  / tail numbers of private aircraft if avoidable), and planning notes.
 
 ## How to change the product
 
@@ -28,20 +28,22 @@ binding, same priority as `REQUIREMENTS.md`.
 
 ## Voice of the spec
 
-- Overlay never holds data.
+- Overlay never holds data or secrets.
 - Globe is canvas; plate is structured.
-- Select by identity, never by screen slot.
-- Kill always wins. Kill skips posting.
+- Select by identity, never by screen slot — including the X account switcher.
+- Kill always wins. Kill skips posting and aborts login.
 - Auto-post requires a dedicated low-trust X account. Main handles are out.
-- Landed means verified by lookup. Outbox never drops a draft.
-- Companion APK never tweets. Only the desk outbox talks to X.
+- Primary poster is the X Android app. API is desk fallback only.
+- Login only if the dedicated handle is missing. Password is SET_TEXT into
+  the OS field, never painted, never logged, never screenshotted.
+- 2FA and SSO fall through.
+- Landed means verified on that profile. Outbox never drops a draft.
 
 ## Research work (allowed here)
 
 - FR24 TalkBack / accessibility node inventories (OQ-FR1, OQ-FR2).
-- Screenshot + label corpus of the FR24 **panel** fields (lat, lon, alt, gs,
-  track, squawk, ICAO24, registration).
-- X API write-quota notes (OQ-X1). Keep them factual; no keys.
+- X app switcher / login / tweet_detail node inventories (OQ-X2, OQ-X3, OQ-X4).
+- Screenshot + label corpus of chrome only.
 - Architecture and sequence diagrams in `docs/`.
 
 See [`docs/handoff.md`](docs/handoff.md) for the current R&D queue.
