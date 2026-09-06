@@ -1,0 +1,8 @@
+.DS_Store
+*.env
+*.pem
+*.key
+secrets/
+outbox/
+.idea/
+.vscode/
